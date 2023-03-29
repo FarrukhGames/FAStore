@@ -1,9 +1,9 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 const Navigation = () => {
     return (
         <nav className="navigation">
-            <a href="#">Меню</a>
-            <a href="#">Корзина</a>
+            <NavLink to="/">Меню</NavLink>
+            <NavLink to="/cart">Корзина</NavLink>
         </nav>
     );
 }

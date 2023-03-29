@@ -47,6 +47,7 @@ body {
   height: 460px;
   border: 5px solid black;
   text-align: center;
+  text-decoration: none;
 }
 
 .good img {
@@ -61,4 +62,60 @@ body {
   height: 50px;
   border-radius: 10px;
   padding-top: 13px;
+}
+
+.telephone .good {
+  margin-left: 411.5px;
+  cursor: auto;
+  /* width: 500px; */
+}
+
+.telephone .good p {
+  opacity: 0;
+}
+
+.telephone .good b {
+  opacity: 0;
+}
+
+.telephone-div {
+  margin: 25px;
+  width: 500px;
+}
+
+.telephone-div button {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  background-color: rgb(255, 208, 0);
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 50px;
+}
+
+.telephone-div button:hover {
+  cursor: pointer;
+}
+
+.telephone-div img {
+  height: 100%;
+}
+
+.telephone-div h1 {
+  position: absolute;
+  top: 30%;
+  left: 44%;
+}
+
+.telephone-div .price {
+  top: 30%;
+  left: 65%;
+}
+
+.telephone-div p {
+  width: 570px;
+  position: absolute;
+  top: 40%;
+  left: 44%;
 }

@@ -3,7 +3,11 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Menu from './components/Menu';
 import Cart from './components/Cart';
-// import {Route, Routes} from 'react-router-dom';
+import Telephone from './components/Telephone';
+import Computer from './components/Computer';
+import Monitor from './components/Monitor';
+import AirPods from './components/AirPods';
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
@@ -11,8 +15,14 @@ function App() {
       <Header/>
       <main className="main">
         <Navigation/> 
-        {/* <Menu/> */}
-        <Cart/>
+        <Routes>
+          <Route path="/" element={<Menu/>}/>
+          <Route path="/telephone" element={<Telephone/>}/>
+          <Route path="/computer" element={<Computer/>}/>
+          <Route path="/monitor" element={<Monitor/>}/>
+          <Route path="/airpods" element={<AirPods/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+        </Routes>
       </main>
     </>
   );
