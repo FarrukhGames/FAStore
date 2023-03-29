@@ -39,7 +39,7 @@ body {
 .menu, .cart {
   display: flex;
   justify-content: space-around;
-  padding: 130px;
+  padding: 120px;
 }
 
 .good {

@@ -2,6 +2,7 @@ import telephone from '../images/F&A Phone.png';
 import monitor from '../images/Computer monitor.jpg';
 import computer from '../images/F&A Computer.png';
 import airpods from '../images/AirPods.jpg';
+import {renderTree} from '../index';
 
 const store = {
     state: {
@@ -21,6 +22,12 @@ const store = {
             id: 5,
         }
         this.state.cart.push(newGood);
+    },
+    deleteGoodInCart(id) {
+        this.state.cart = this.state.cart.filter((good) => {
+            return good.id !== id;
+        });
+        renderTree();  
     }
 }
 export default store;
