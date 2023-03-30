@@ -18,16 +18,20 @@ const Good = function(props) {
     const removeGood = () => {
         store.deleteGoodInCart(props.id);
     } 
+    const onClickHandler = (event) => {
+        event.preventDefault();
+        store.addGoodInCart(props.img, props.name, props.price, props.id);
+        alert("Товар добавлен в корзину");
+        console.log(store.state.cart)
+    }
     return(
         <div className="link">     
-            <NavLink to={link} className="link">
-                <div className="good">
-                    <img src={props.img}/>
-                    <b>{props.name}</b>
-                    <p>{props.price}</p>
-                </div>
-            </NavLink>
-            <button onClick={removeGood}>Удалить</button>
+            <div className="good">
+                <img src={props.img}/>
+                <NavLink to={link} className="link"><b>{props.name}</b></NavLink>
+                <button type="button" onClick={onClickHandler} className="add-to-cart">{props.price}</button>
+            </div>     
+            <button onClick={removeGood} className="delete">Удалить</button>
         </div>
     )
 }

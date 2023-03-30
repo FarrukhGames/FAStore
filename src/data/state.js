@@ -14,12 +14,12 @@ const store = {
         ],
         cart: []
     },
-    addGoodInCart(img, name, price) {
+    addGoodInCart(img, name, price, id) {
         const newGood = { 
             img: img,
             name: name,
             price: price,
-            id: 5,
+            id: id
         }
         this.state.cart.push(newGood);
     },

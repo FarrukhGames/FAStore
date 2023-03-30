@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
-import Menu from './components/Menu';
+import Catalog from './components/Catalog';
 import Cart from './components/Cart';
 import Telephone from './components/Telephone';
 import Computer from './components/Computer';
@@ -16,7 +16,7 @@ function App() {
       <main className="main">
         <Navigation/> 
         <Routes>
-          <Route path="/" element={<Menu/>}/>
+          <Route path="/" element={<Catalog/>}/>
           <Route path="/telephone" element={<Telephone/>}/>
           <Route path="/computer" element={<Computer/>}/>
           <Route path="/monitor" element={<Monitor/>}/>
