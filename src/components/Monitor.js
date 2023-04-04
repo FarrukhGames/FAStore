@@ -1,15 +1,18 @@
 import monitor from '../images/Computer monitor.jpg';
 import Good from './Good';
 import store from '../data/state'
+import CartPanel from './CartPanel';
+import {addGoodInCart} from '../data/state';
 const Monitor = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        store.addGoodInCart(monitor, "monitor", "200$", 3);
-        alert("Товар добавлен в корзину");
-        console.log(store.state.cart)
+        const dispatch = store.dispatch.bind(store);
+        dispatch(addGoodInCart(monitor, "monitor", "200$", 3));
+        console.log(store.getState().cart)
     }
     return(
         <div>
+            <CartPanel/>
             <form className="telephone-div" onSubmit={onSubmitHandler}>
                 <div className="telephone">
                     <Good img={monitor} name={"monitor"} price={"200$"}/>  

@@ -5,7 +5,7 @@ import airpods from '../images/AirPods.jpg';
 import {renderTree} from '../index';
 
 const store = {
-    state: {
+    _state: {
         goods: [
             {img: telephone, name: "F&A phone", price: "999$", id: 1},
             {img: computer, name: "F&A computer", price: "1700$", id: 2},
@@ -14,20 +14,54 @@ const store = {
         ],
         cart: []
     },
-    addGoodInCart(img, name, price, id) {
-        const newGood = { 
-            img: img,
-            name: name,
-            price: price,
-            id: id
-        }
-        this.state.cart.push(newGood);
+    getState() {
+        return this._state;
     },
     deleteGoodInCart(id) {
-        this.state.cart = this.state.cart.filter((good) => {
+        this._state.cart = this._state.cart.filter((good) => {
             return good.id !== id;
         });
         renderTree();  
+    },
+    dispatch(action) {
+        switch(action.type) {
+            case "ADD_GOOD": 
+                const newGood = { 
+                    img: action.img,
+                    name: action.name,
+                    price: action.price,
+                    id: action.id
+                }
+                this._state.cart.push(newGood);
+                renderTree();  
+                break;
+            case "DELETE_GOOD":
+                this._state.cart = this._state.cart.filter((good) => {
+                    return good.id !== action.id;
+                });
+                renderTree();
+                break;
+            default: 
+                console.log("Ошибка");
+                break;
+        }
     }
+}
+export const addGoodInCart = (img, name, price, id) => {
+    const action = {
+        type: "ADD_GOOD", 
+        img: img,
+        name: name,
+        price: price,
+        id: id
+    }
+    return action;
+}
+export const deleteGoodInCart = (id) => {
+    const action = {
+        type: "DELETE_GOOD", 
+        id: id
+    }
+    return action;
 }
 export default store;

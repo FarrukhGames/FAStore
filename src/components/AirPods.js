@@ -1,15 +1,18 @@
 import airpods from '../images/AirPods.jpg';
 import Good from './Good';
 import store from '../data/state'
+import CartPanel from './CartPanel';
+import {addGoodInCart} from '../data/state';
 const Monitor = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        store.addGoodInCart(airpods, "airpods", "300$",4);
-        alert("Товар добавлен в корзину");
-        console.log(store.state.cart)
+        const dispatch = store.dispatch.bind(store);
+        dispatch(addGoodInCart(airpods, "airpods", "300$",4));
+        console.log(store.getState().cart)
     }
     return(
         <div>
+            <CartPanel/>
             <form className="telephone-div" onSubmit={onSubmitHandler}>
                 <div className="telephone">
                     <Good img={airpods} name={"airpods"} price={"300$"}/>  

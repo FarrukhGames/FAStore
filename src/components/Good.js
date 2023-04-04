@@ -4,6 +4,8 @@ import monitor from '../images/Computer monitor.jpg';
 import computer from '../images/F&A Computer.png';
 import airpods from '../images/AirPods.jpg';
 import store from '../data/state';
+import {addGoodInCart} from '../data/state';
+import {deleteGoodInCart} from '../data/state';
 let link;
 const Good = function(props) {
     if (props.img === telephone) {
@@ -16,18 +18,18 @@ const Good = function(props) {
         link = "/airpods";
     } 
     const removeGood = () => {
-        store.deleteGoodInCart(props.id);
+        const dispatch = store.dispatch.bind(store);
+        dispatch(deleteGoodInCart(props.id));
     } 
     const onClickHandler = (event) => {
         event.preventDefault();
-        store.addGoodInCart(props.img, props.name, props.price, props.id);
-        alert("Товар добавлен в корзину");
-        console.log(store.state.cart)
+        const dispatch = store.dispatch.bind(store);
+        dispatch(addGoodInCart(props.img, props.name, props.price, props.id));
     }
     return(
-        <div className="link">     
+        <div className="link">
             <div className="good">
-                <img src={props.img}/>
+                <img src={props.img} alt="товар"/>
                 <NavLink to={link} className="link"><b>{props.name}</b></NavLink>
                 <button type="button" onClick={onClickHandler} className="add-to-cart">{props.price}</button>
             </div>     
