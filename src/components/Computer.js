@@ -2,12 +2,12 @@ import computer from '../images/F&A Computer.png';
 import Good from './Good';
 import store from '../data/state'
 import CartPanel from './CartPanel';
-import {addGoodInCart} from '../data/state';
+import {addGoodInCartAC} from '../data/state';
 const Computer = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         const dispatch = store.dispatch.bind(store);
-        dispatch(addGoodInCart(computer, "computer", "1700$", 2));
+        dispatch(addGoodInCartAC(computer, "computer", "1700$", 2));
         console.log(store.getState().cart)
     }
     return(

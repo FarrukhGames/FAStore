@@ -41,7 +41,7 @@ const store = {
         }
     }
 }
-export const addGoodInCart = (img, name, price, id) => {
+export const addGoodInCartAC = (img, name, price, id) => {
     const action = {
         type: "ADD_GOOD", 
         img: img,
@@ -51,7 +51,7 @@ export const addGoodInCart = (img, name, price, id) => {
     }
     return action;
 }
-export const deleteGoodInCart = (id) => {
+export const deleteGoodInCartAC = (id) => {
     const action = {
         type: "DELETE_GOOD", 
         id: id

@@ -2,12 +2,12 @@ import telephone from '../images/F&A Phone.png';
 import Good from './Good';
 import store from '../data/state'
 import CartPanel from './CartPanel';
-import {addGoodInCart} from '../data/state';
+import {addGoodInCartAC} from '../data/state';
 const Telephone = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         const dispatch = store.dispatch.bind(store);
-        dispatch(addGoodInCart(telephone, "telephone", "999$", 1));
+        dispatch(addGoodInCartAC(telephone, "telephone", "999$", 1));
         console.log(store.getState().cart)
     }
     return(

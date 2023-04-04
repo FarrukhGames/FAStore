@@ -2,12 +2,12 @@ import monitor from '../images/Computer monitor.jpg';
 import Good from './Good';
 import store from '../data/state'
 import CartPanel from './CartPanel';
-import {addGoodInCart} from '../data/state';
+import {addGoodInCartAC} from '../data/state';
 const Monitor = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         const dispatch = store.dispatch.bind(store);
-        dispatch(addGoodInCart(monitor, "monitor", "200$", 3));
+        dispatch(addGoodInCartAC(monitor, "monitor", "200$", 3));
         console.log(store.getState().cart)
     }
     return(

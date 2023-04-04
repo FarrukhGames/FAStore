@@ -2,12 +2,12 @@ import airpods from '../images/AirPods.jpg';
 import Good from './Good';
 import store from '../data/state'
 import CartPanel from './CartPanel';
-import {addGoodInCart} from '../data/state';
+import {addGoodInCartAC} from '../data/state';
 const Monitor = function(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         const dispatch = store.dispatch.bind(store);
-        dispatch(addGoodInCart(airpods, "airpods", "300$",4));
+        dispatch(addGoodInCartAC(airpods, "airpods", "300$",4));
         console.log(store.getState().cart)
     }
     return(
