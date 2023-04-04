@@ -17,12 +17,6 @@ const store = {
     getState() {
         return this._state;
     },
-    deleteGoodInCart(id) {
-        this._state.cart = this._state.cart.filter((good) => {
-            return good.id !== id;
-        });
-        renderTree();  
-    },
     dispatch(action) {
         switch(action.type) {
             case "ADD_GOOD": 
