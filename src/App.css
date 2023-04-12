@@ -65,6 +65,14 @@ body {
   color: black;
 }
 
+.link:hover {
+  color: #00A8CF;
+}
+
+.link-price {
+  display: block;
+}
+
 .catalog .delete {
   opacity: 0;
 }
@@ -118,11 +126,12 @@ body {
 
 .telephone-div {
   width: 1000px;
+  height: 500px;
   margin: auto;
   border: 1px solid black;
   display: grid;
   grid-template-columns: 500px 500px;
-  grid-template-rows: repeat(4, 25%);
+  grid-template-rows: repeat(4, 125px);
   grid-template-areas: "image name"
                        "image description"
                        "image price"
@@ -147,6 +156,8 @@ body {
 
 .telephone-div img {
   height: 100%;
+  grid-area: image;
+  margin-left: 5px;
 }
 
 .telephone-div h1 {

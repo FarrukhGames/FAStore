@@ -6,7 +6,7 @@ const Catalog = function(props) {
         <div className="catalog">
             <CartPanel/>
             {store.getState().goods.map((element) => {
-                return <Good img={element.img} name={element.name} price={element.price} key={element.id} id={element.id}/>  
+                return <Good good={element} img={element.img} name={element.name} price={element.price} key={element.id} id={element.id} slug={element.slug}/>  
             })}
         </div>
     )
