@@ -1,6 +1,6 @@
 import store from '../data/state';
 import CartPanel from './CartPanel';
-import {addGoodInCartAC} from '../data/state';
+import {addGoodInCartAC} from '../data/cartReducer';
 import {useParams} from 'react-router-dom';
 const SingleGood = function(props) {
     let params = useParams();

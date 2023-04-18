@@ -2,6 +2,7 @@ import telephone from '../images/F&A Phone.png';
 import monitor from '../images/Computer monitor.jpg';
 import computer from '../images/F&A Computer.png';
 import airpods from '../images/AirPods.jpg';
+import cartReducer from './cartReducer';
 import {renderTree} from '../index';
 
 const store = {
@@ -21,36 +22,5 @@ const store = {
         this._state.cart = cartReducer(this._state.cart, action);
         renderTree();  
     }
-}
-const cartReducer = (state, action) => {
-    console.log(action)
-    switch(action.type) {
-        case "ADD_GOOD": 
-            state.push(action.good);
-            break;
-        case "DELETE_GOOD":
-            state = state.filter((good) => {
-                return good.id !== action.id;
-            });
-            break;
-        default: 
-            console.log("Ошибка");
-            break;
-    }
-    return state;
-}
-export const addGoodInCartAC = (good) => {
-    const action = {
-        type: "ADD_GOOD", 
-        good
-    }
-    return action;
-}
-export const deleteGoodInCartAC = (id) => {
-    const action = {
-        type: "DELETE_GOOD", 
-        id: id
-    }
-    return action;
 }
 export default store;

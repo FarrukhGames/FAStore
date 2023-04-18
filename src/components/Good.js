@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import store from '../data/state';
-import {deleteGoodInCartAC} from '../data/state';
-import {addGoodInCartAC} from '../data/state';
+import {deleteGoodInCartAC} from '../data/cartReducer';
+import {addGoodInCartAC} from '../data/cartReducer';
 const Good = function(props) {
     const onClickHandler = (event) => {
         event.preventDefault();
