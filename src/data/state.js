@@ -18,22 +18,26 @@ const store = {
         return this._state;
     },
     dispatch(action) {
-        switch(action.type) {
-            case "ADD_GOOD": 
-                this._state.cart.push(action.good);
-                renderTree();  
-                break;
-            case "DELETE_GOOD":
-                this._state.cart = this._state.cart.filter((good) => {
-                    return good.id !== action.id;
-                });
-                renderTree();
-                break;
-            default: 
-                console.log("Ошибка");
-                break;
-        }
+        this._state.cart = cartReducer(this._state.cart, action);
+        renderTree();  
     }
+}
+const cartReducer = (state, action) => {
+    console.log(action)
+    switch(action.type) {
+        case "ADD_GOOD": 
+            state.push(action.good);
+            break;
+        case "DELETE_GOOD":
+            state = state.filter((good) => {
+                return good.id !== action.id;
+            });
+            break;
+        default: 
+            console.log("Ошибка");
+            break;
+    }
+    return state;
 }
 export const addGoodInCartAC = (good) => {
     const action = {
