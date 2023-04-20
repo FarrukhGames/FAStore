@@ -1,0 +1,32 @@
+.cart-item {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(2, 50%);
+    grid-template-areas: "img name price number"
+                         "img delete postpone .";         
+    justify-items: center;
+    align-items: center;
+                        
+}
+
+.cart-item img {
+    grid-area: img;
+    width: 100%;
+}
+
+.cart-item__title {
+    grid-area: name;
+}
+
+.cart-item__delete {
+    grid-area: delete;
+}
+
+.cart-item__postpone {
+    grid-area: postpone;
+}
+
+.cart-item__number {
+    grid-area: number;
+}
+
