@@ -3,7 +3,9 @@ const DELETE_GOOD = "DELETE_GOOD"
 const cartReducer = (state, action) => {
     switch(action.type) {
         case ADD_GOOD: 
-            state.push(action.good);
+            let newGood = {...action.good, number: 1};
+            state.push(newGood);
+            console.log(newGood);
             break;
         case DELETE_GOOD:
             state = state.filter((good) => {
