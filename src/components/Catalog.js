@@ -2,6 +2,7 @@ import store from '../data/state';
 import Good from './Good';
 import CartPanel from './CartPanel';
 const Catalog = function(props) {
+    console.log(store.getState());
     return(
         <div className="catalog">
             <CartPanel/>
