@@ -2,15 +2,16 @@ import store from '../data/state';
 import CartPanel from './CartPanel';
 import {addGoodInCartAC} from '../data/cartReducer';
 import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 const SingleGood = function(props) {
     let params = useParams();
+    let dispatch = useDispatch();
     console.log(params.product);
     let good = store.getState().goods.find((product) => {
         return product.slug === params.product;
     });
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        const dispatch = store.dispatch.bind(store);
         dispatch(addGoodInCartAC(good));
     }
     return(

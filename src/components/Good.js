@@ -1,10 +1,10 @@
 import {NavLink} from 'react-router-dom';
-import store from '../data/state';
 import {addGoodInCartAC} from '../data/cartReducer';
+import {useDispatch, useSelector} from 'react-redux';
 const Good = function(props) {
+    let dispatch = useDispatch();
     const onClickHandler = (event) => {
         event.preventDefault();
-        const dispatch = store.dispatch.bind(store);
         dispatch(addGoodInCartAC(props.good));
     } 
     return(
