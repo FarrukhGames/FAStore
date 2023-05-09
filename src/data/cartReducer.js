@@ -17,35 +17,39 @@ const initialState = {
 }
     
 const cartReducer = (state = initialState, action) => {
+    const newState = {...state};
     switch(action.type) {
         case ADD_GOOD: 
-            let newGood = {...action.good, number: 1};
-            state.cart.push(newGood);
+            const newGood = {...action.good, number: 1};
+            newState.cart = [...newState.cart, newGood];
             console.log(newGood);
             break;
         case DELETE_GOOD:
-            state.cart = state.cart.filter((good) => {
+            newState.cart = newState.cart.filter((good) => {
                 return good.id !== action.id;
             });
+            newState.cart = [...newState.cart];
             break;
         case ADD_NUMBER: 
-            const goodPlus = state.cart.find((element) => {
+            const goodPlus = newState.cart.find((element) => {
                 return element.id === action.id;
             });
             goodPlus.number = goodPlus.number + 1;
+            newState.cart = [...newState.cart];
             break;
         case MINUS_NUMBER: 
-            const goodMinus = state.cart.find((element) => {
+            const goodMinus = newState.cart.find((element) => {
                 return element.id === action.id;
             });
             goodMinus.number = goodMinus.number - 1;
+            newState.cart = [...newState.cart];
             break;
         default: 
             console.log("Ошибка");
             break;
     }
     console.log(state);
-    return state;
+    return newState;
 }
 export const addGoodInCartAC = (good) => {
     const action = {

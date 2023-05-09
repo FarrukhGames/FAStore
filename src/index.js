@@ -8,7 +8,7 @@ import store from './data/state';
 import {Provider} from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const renderTree = () => {
+// export const renderTree = () => {
   root.render( 
     <Provider store={store}>
       <BrowserRouter>
@@ -16,9 +16,9 @@ export const renderTree = () => {
       </BrowserRouter>
     </Provider>
   );
-}
-store.subscribe(renderTree);
-renderTree();
+// }
+// store.subscribe(renderTree);
+// renderTree();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

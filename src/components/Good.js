@@ -1,8 +1,8 @@
 import {NavLink} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import {addGoodInCartAC} from '../data/cartReducer';
-import {useDispatch, useSelector} from 'react-redux';
 const Good = function(props) {
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
     const onClickHandler = (event) => {
         event.preventDefault();
         dispatch(addGoodInCartAC(props.good));

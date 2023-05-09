@@ -1,8 +1,8 @@
+import {useParams} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import store from '../data/state';
 import CartPanel from './CartPanel';
 import {addGoodInCartAC} from '../data/cartReducer';
-import {useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
 const SingleGood = function(props) {
     let params = useParams();
     let dispatch = useDispatch();

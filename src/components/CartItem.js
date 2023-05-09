@@ -1,24 +1,22 @@
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {deleteGoodInCartAC} from '../data/cartReducer';
 import {addNumberAC} from '../data/cartReducer';
 import {minusNumberAC} from '../data/cartReducer';
 import store from '../data/state';
 import './CartItem.css';
-import {useState} from 'react';
 const CartItem = (props) => {
-    let [number, setNumber]= useState(1);
+    // let [number, setNumber]= useState(1);
+    const dispatch = useDispatch();
     const removeGood = () => {
-        const dispatch = store.dispatch.bind(store);
         dispatch(deleteGoodInCartAC(props.id));
     }
     const plusGood = () => {
-        const dispatch = store.dispatch.bind(store);
         dispatch(addNumberAC(props.id));
     }
     const minusGood = () => {
-        const dispatch = store.dispatch.bind(store);
         dispatch(minusNumberAC(props.id));
         if (props.number === 1) {
-            const dispatch = store.dispatch.bind(store);
             dispatch(deleteGoodInCartAC(props.id));
         }
     }

@@ -1,11 +1,13 @@
-import cartImg from "../images/Cart.png"
-import store from '../data/state';
+import cartImg from "../images/Cart.png";
+import {useSelector} from 'react-redux';
 const CartPanel = function(props) {
-    console.log(store.getState().cart.length)
+    const cart = useSelector((state) => {
+        return state.cart
+    });
     return(
         <div className="cart-panel">
             <h1>Ваша Корзина</h1>
-            <p>{store.getState().cart.length}</p>
+            <p>{cart.length}</p>
             <img src={cartImg} alt="Корзина"/>
         </div>
     )
