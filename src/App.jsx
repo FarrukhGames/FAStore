@@ -11,6 +11,7 @@ import Page1 from './components/Page1';
 import Page2 from './components/Page2';
 // import Page from './components/Page';
 import SingleGood from './components/SingleGood';
+import Deferred from './components/Deferred';
 import {Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/page2" element={<Page2/>}/>
           {/* <Route path="/:page" element={<Page/>}/> */}
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/deferred" element={<Deferred/>}/>
         </Routes>
       </main>
     </>

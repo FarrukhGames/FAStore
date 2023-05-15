@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteGoodInCartAC} from '../data/cartReducer';
+import {addGoodInDeferredAC} from '../data/cartReducer';
 import {addNumberAC} from '../data/cartReducer';
 import {minusNumberAC} from '../data/cartReducer';
 import store from '../data/state';
@@ -10,6 +11,10 @@ const CartItem = (props) => {
     const dispatch = useDispatch();
     const removeGood = () => {
         dispatch(deleteGoodInCartAC(props.id));
+    }
+    const deferrededGood = () => {
+        dispatch(deleteGoodInCartAC(props.id));
+        dispatch(addGoodInDeferredAC(props.id));
     }
     const plusGood = () => {
         dispatch(addNumberAC(props.id));
@@ -29,7 +34,7 @@ const CartItem = (props) => {
             <p className="cart-item__number">{props.number}</p>
             <button className="cart-item__plus" onClick={plusGood}>+</button>
             <button onClick={removeGood} className="cart-item__delete button">Удалить</button>
-            <button className="cart-item__postpone button">Отложить</button>
+            <button onClick={deferrededGood} className="cart-item__postpone button">Отложить</button>
         </article>
     )
 }

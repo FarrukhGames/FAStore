@@ -3,7 +3,9 @@ import monitor from '../images/Computer monitor.jpg';
 import computer from '../images/F&A Computer.png';
 import airpods from '../images/AirPods.jpg';
 const ADD_GOOD = "ADD_GOOD";
+const ADD_DEFERRED = "ADD_DEFERRED";
 const DELETE_GOOD = "DELETE_GOOD";
+const DELETE_DEFERRED = "DELETE_DEFERRED";
 const ADD_NUMBER = "ADD_NUMBER";
 const MINUS_NUMBER = "MINUS_NUMBER";
 const initialState = {
@@ -13,7 +15,8 @@ const initialState = {
             {img: monitor, name: "F&A monitor", price: "200$", id: 3, slug: "fa-monitor", description: "KOORUI Écran PC 24 Pouces Full HD (1920 x 1080), IPS, 16:9, 75Hz, 5ms, VGA et HDMI, Mode Faible lumière Bleue, Grand angle de vue 178°"},
             {img: airpods, name: "F&A Airpods", price: "300$", id: 4, slug: "fa-airpods", description: "Apple Airpods Pro (2ᵉ génération) ​​​​​​​avec boîtier de Charge MagSafe (2022)"}
         ],
-    cart: []
+    cart: [],
+    deferred: []
 }
     
 const cartReducer = (state = initialState, action) => {
@@ -24,11 +27,22 @@ const cartReducer = (state = initialState, action) => {
             newState.cart = [...newState.cart, newGood];
             console.log(newGood);
             break;
+        case ADD_DEFERRED: 
+            const newDeferredGood = {...action.deferredItem};
+            newState.deferred = [...newState.deferred, newDeferredGood];
+            console.log(newDeferredGood);
+            break;
         case DELETE_GOOD:
             newState.cart = newState.cart.filter((good) => {
                 return good.id !== action.id;
             });
             newState.cart = [...newState.cart];
+            break;
+        case DELETE_DEFERRED:
+            newState.deferred = newState.deferred.filter((deferredItem) => {
+                return deferredItem.id !== action.id;
+            });
+            newState.deferred = [...newState.deferred];
             break;
         case ADD_NUMBER: 
             const goodPlus = newState.cart.find((element) => {
@@ -58,9 +72,23 @@ export const addGoodInCartAC = (good) => {
     }
     return action;
 }
+export const addGoodInDeferredAC = (good) => {
+    const action = {
+        type: ADD_DEFERRED, 
+        good
+    }
+    return action;
+}
 export const deleteGoodInCartAC = (id) => {
     const action = {
         type: DELETE_GOOD, 
+        id: id
+    }
+    return action;
+}
+export const deleteGoodInDeferredAC = (id) => {
+    const action = {
+        type: DELETE_DEFERRED, 
         id: id
     }
     return action;

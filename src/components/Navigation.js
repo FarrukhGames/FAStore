@@ -4,6 +4,7 @@ const Navigation = () => {
         <nav className="navigation">
             <NavLink to="/">Каталог</NavLink>
             <NavLink to="/cart">Корзина</NavLink>
+            <NavLink to="/deferred">Отложенное</NavLink>
         </nav>
     );
 }
