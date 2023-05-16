@@ -25,12 +25,10 @@ const cartReducer = (state = initialState, action) => {
         case ADD_GOOD: 
             const newGood = {...action.good, number: 1};
             newState.cart = [...newState.cart, newGood];
-            console.log(newGood);
             break;
         case ADD_DEFERRED: 
-            const newDeferredGood = {...action.deferredItem};
+            const newDeferredGood = {...action.good};
             newState.deferred = [...newState.deferred, newDeferredGood];
-            console.log(newDeferredGood);
             break;
         case DELETE_GOOD:
             newState.cart = newState.cart.filter((good) => {
@@ -62,7 +60,7 @@ const cartReducer = (state = initialState, action) => {
             console.log("Ошибка");
             break;
     }
-    console.log(state);
+    console.log(newState);
     return newState;
 }
 export const addGoodInCartAC = (good) => {

@@ -8,10 +8,10 @@ const DeferredItem = (props) => {
         dispatch(addGoodInCartAC(props.good));
     }
     return (
-        <article className="deferred-item">
+        <article className="cart-item">
             <img src={props.img}/>
-            <h2 className="deferred-item__title">{props.name}</h2>
-            <p className="deferred-item__price">{props.price}</p>
+            <h2 className="cart-item__title">{props.name}</h2>
+            <p className="cart-item__price">{props.price}</p>
             <button onClick={removeDeferred} className="deferred-item__delete button">Убрать из отложенного</button>
         </article>
     )

@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import DeferredItem from './CartItem';
+import DeferredItem from './DeferredItem';
 const Deferred = (props) => {
     const dispatch = useDispatch();
     const deferred = useSelector((state) => {
@@ -8,7 +8,7 @@ const Deferred = (props) => {
     return (
         <div className="cart">
             {deferred.map((element) => {
-                return <DeferredItem deferredItem={element} img={element.img} name={element.name} price={element.price} key={element.id} id={element.id}/>  
+                return <DeferredItem good={element} img={element.img} name={element.name} price={element.price} key={element.id} id={element.id}/>  
             })}
         </div>
     )

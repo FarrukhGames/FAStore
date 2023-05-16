@@ -14,7 +14,7 @@ const CartItem = (props) => {
     }
     const deferrededGood = () => {
         dispatch(deleteGoodInCartAC(props.id));
-        dispatch(addGoodInDeferredAC(props.id));
+        dispatch(addGoodInDeferredAC(props.good));
     }
     const plusGood = () => {
         dispatch(addNumberAC(props.id));

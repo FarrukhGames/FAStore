@@ -40,7 +40,7 @@ body {
     padding: 5px;
 }
 
-.active {
+.navigation .active {
   background-color: #131921;  
 }
 
