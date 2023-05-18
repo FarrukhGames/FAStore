@@ -12,6 +12,7 @@ const DeferredItem = (props) => {
             <img src={props.img}/>
             <h2 className="cart-item__title">{props.name}</h2>
             <p className="cart-item__price">{props.price}</p>
+            <p>{props.id}</p>
             <button onClick={removeDeferred} className="deferred-item__delete button">Убрать из отложенного</button>
         </article>
     )
