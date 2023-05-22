@@ -24,14 +24,22 @@ const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_GOOD: 
             const newGood = {...action.good, number: 1};
-            newState.cart = [...newState.cart, newGood];
-            if (newGood.id === newGood.id) {
-                newGood.number++;
+            const sameGood  = newState.cart.find((good) => {
+                return good.id === newGood.id
+            })
+            if (!sameGood) {         
+                newState.cart = [...newState.cart, newGood];
+            }
+            if (sameGood) {
+              sameGood.number++;
             }
             break;
         case ADD_DEFERRED: 
-            if (newState.deferred !== "") {
-                const newDeferredGood = {...action.good};
+            const newDeferredGood = {...action.good};
+            const sameDefferedGood  = newState.deferred.find((good) => {
+                return good.id === newDeferredGood.id
+            })
+            if (!sameDefferedGood) {          
                 newState.deferred = [...newState.deferred, newDeferredGood];
             }
             break;
