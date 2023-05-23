@@ -39,7 +39,7 @@ const cartReducer = (state = initialState, action) => {
             const sameDefferedGood  = newState.deferred.find((good) => {
                 return good.id === newDeferredGood.id
             })
-            if (!sameDefferedGood) {          
+            if (!sameDefferedGood) {        
                 newState.deferred = [...newState.deferred, newDeferredGood];
             }
             break;
@@ -50,10 +50,16 @@ const cartReducer = (state = initialState, action) => {
             newState.cart = [...newState.cart];
             break;
         case DELETE_DEFERRED:
-            newState.deferred = newState.deferred.filter((deferredItem) => {
-                return deferredItem.id !== action.id;
-            });
-            newState.deferred = [...newState.deferred];
+            const defItem = newState.deferred.find((good) => {
+                return good.id === action.id
+            })
+            if (defItem) {
+                newState.deferred = newState.deferred.filter((deferredItem) => {
+                    return deferredItem.id !== action.id;
+                });
+                newState.deferred = [...newState.deferred];
+                newState.cart = [...newState.cart, defItem];
+            }
             break;
         case ADD_NUMBER: 
             const goodPlus = newState.cart.find((element) => {
@@ -68,12 +74,17 @@ const cartReducer = (state = initialState, action) => {
             });
             goodMinus.number = goodMinus.number - 1;
             newState.cart = [...newState.cart];
+            if (goodMinus.number <= 0) {
+                newState.cart = newState.cart.filter((good) => {
+                    return good.id !== action.id;
+                });
+                newState.cart = [...newState.cart];
+            }
             break;
         default: 
             console.log("Ошибка");
             break;
     }
-    console.log(newState);
     return newState;
 }
 export const addGoodInCartAC = (good) => {

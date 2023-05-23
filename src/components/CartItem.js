@@ -1,10 +1,8 @@
-import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteGoodInCartAC} from '../data/cartReducer';
 import {addGoodInDeferredAC} from '../data/cartReducer';
 import {addNumberAC} from '../data/cartReducer';
 import {minusNumberAC} from '../data/cartReducer';
-import store from '../data/state';
 import './CartItem.css';
 const CartItem = (props) => {
     // let [number, setNumber]= useState(1);
@@ -21,9 +19,6 @@ const CartItem = (props) => {
     }
     const minusGood = () => {
         dispatch(minusNumberAC(props.id));
-        if (props.number === 1) {
-            dispatch(deleteGoodInCartAC(props.id));
-        }
     }
     return (
         <article className="cart-item">
