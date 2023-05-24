@@ -12,9 +12,12 @@ import Page2 from './components/Page2';
 // import Page from './components/Page';
 import SingleGood from './components/SingleGood';
 import Deferred from './components/Deferred';
+import Auth from './components/Auth'
 import {Route, Routes} from 'react-router-dom';
+import {useState} from "react"
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <>
       <Header/>
@@ -33,6 +36,7 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/deferred" element={<Deferred/>}/>
         </Routes>
+        {!isLogged && <Auth/>}
       </main>
     </>
   );
