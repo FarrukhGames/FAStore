@@ -12,17 +12,24 @@ import Page2 from './components/Page2';
 // import Page from './components/Page';
 import SingleGood from './components/SingleGood';
 import Deferred from './components/Deferred';
-import Auth from './components/Auth'
+import Auth from './components/Auth';
 import {Route, Routes} from 'react-router-dom';
-import {useState} from "react"
+import {useState} from "react";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+  const loginHandler = (event) => {
+    event.preventDefault();
+    setIsLogged(true);
+  }
+  const logoutHandler = () => {
+    setIsLogged(false)
+  }
   return (
     <>
       <Header/>
       <main className="main">
-        <Navigation/> 
+        <Navigation isAuthenticated={isLogged} logoutFunction={logoutHandler}/> 
         <Routes>
           <Route path="/" element={<Catalog/>}/>
           {/* <Route path="/telephone" element={<Telephone/>}/> */}
@@ -36,7 +43,7 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/deferred" element={<Deferred/>}/>
         </Routes>
-        {!isLogged && <Auth/>}
+        {!isLogged && <Auth loginFunction={loginHandler}/>}
       </main>
     </>
   );

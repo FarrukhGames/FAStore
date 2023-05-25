@@ -29,19 +29,31 @@ body {
   justify-content: center;
 }
 
-.navigation a {
+.navigation__link {
     text-align: center;
     text-decoration: none;
     color: white;
+    background-color: transparent;
+    border:none;
     font-size: 25px;
-    transition: 0.3s;
+    transition: 0.2s;
     width: 300px;
     border-radius: 10px;
     padding: 5px;
+    cursor: pointer;
+}
+
+.navigation__link:hover {
+  transform: scale(1.1);
 }
 
 .navigation .active {
   background-color: #131921;  
+}
+
+.navigation .active:hover {
+  transform: none;
+  cursor: default; 
 }
 
 .catalog, .cart {
@@ -252,14 +264,25 @@ body {
   border: none;
   border-bottom: 1px solid #a6aebc;
   font-size: 17px;
+  outline: none;
 }
 
-.Log-in {
+.form__log-in input:focus {
+  border-bottom: 1px solid #2690d9;
+}
+
+.login {
   width: 80%;
   height: 40px;
   border-radius: 50px;
   border: none;
   background-color: #2690d9;
+  cursor: pointer;
   font-size: 20px;
   color: white; 
+  outline: none;
+}
+
+.login:focus {
+  box-shadow: 0px 0px 0px 3px #1c5a83;
 }
