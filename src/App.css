@@ -245,7 +245,6 @@ body {
 .form {
   width: 400px;
   height: 500px;
-  border: 5px solid black;
   border-radius: 10px;
   text-align: center;
 } 
