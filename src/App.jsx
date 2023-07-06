@@ -14,22 +14,40 @@ import SingleGood from './components/SingleGood';
 import Deferred from './components/Deferred';
 import Auth from './components/Auth';
 import {Route, Routes} from 'react-router-dom';
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import Modal from "./components/Modal";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+  const [isModalShown, setIsModalShown] = useState(false);
+  const isLoggedInfo = localStorage.getItem("logged");
+  useEffect(() => {
+    console.log("effect");
+    if (isLoggedInfo === "1") {
+      setIsLogged(true);
+    }
+  }, []);
   const loginHandler = (event) => {
     event.preventDefault();
     setIsLogged(true);
+    localStorage.setItem("logged", "1");
   }
   const logoutHandler = () => {
-    setIsLogged(false)
+    setIsLogged(false);
+    // localStorage.setItem("logged", "0");
+    localStorage.removeItem("logged");
+  }
+  const showModal = () => {
+    setIsModalShown(true);
+  }
+  const hideModal = () => {
+    setIsModalShown(false);
   }
   return (
     <>
       <Header/>
       <main className="main">
-        <Navigation isAuthenticated={isLogged} logoutFunction={logoutHandler}/> 
+        <Navigation isAuthenticated={isLogged} logoutFunction={logoutHandler} showModalFunction={showModal}/> 
         <Routes>
           <Route path="/" element={<Catalog/>}/>
           {/* <Route path="/telephone" element={<Telephone/>}/> */}
@@ -43,7 +61,7 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/deferred" element={<Deferred/>}/>
         </Routes>
-        {!isLogged && <Auth loginFunction={loginHandler}/>}
+        {isModalShown && <Modal hideModalFunction={hideModal}><Auth loginFunction={loginHandler}/></Modal>}
       </main>
     </>
   );

@@ -7,6 +7,7 @@ const Navigation = (props) => {
             <NavLink to="/deferred" className="navigation__link">Отложенное</NavLink>
             {props.isAuthenticated && <NavLink className="navigation__link" to="/account ">Личный Кабинет</NavLink>}
             {props.isAuthenticated && <button className="navigation__link" onClick={props.logoutFunction}>Выйти из аккаунта</button>}
+            {!props.isAuthenticated && <button className="navigation__link navigation__show-modal" onClick={props.showModalFunction}>Log In</button>}
         </nav>
     );
 }
