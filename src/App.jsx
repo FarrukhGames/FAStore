@@ -61,7 +61,8 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/deferred" element={<Deferred/>}/>
         </Routes>
-        {isModalShown && <Modal hideModalFunction={hideModal} showModalFunction={showModal} isShown={isModalShown}><Auth loginFunction={loginHandler}/></Modal>}
+        {/* {isModalShown && <Modal hideModalFunction={hideModal} showModalFunction={showModal} isShown={isModalShown}><Auth loginFunction={loginHandler}/></Modal>} */}
+        {<Modal hideModalFunction={hideModal} showModalFunction={showModal} isShown={isModalShown}><Auth loginFunction={loginHandler}/></Modal>}
       </main>
     </>
   );
